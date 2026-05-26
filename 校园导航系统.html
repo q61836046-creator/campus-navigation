@@ -3710,9 +3710,8 @@
         }
 
         function openShareModal() {
-            // 本地打开时使用线上地址，线上打开时使用当前URL
-            const onlineUrl = 'https://q61836046-creator.github.io/campus-navigation/';
-            const pageUrl = (window.location.protocol === 'file:') ? onlineUrl : window.location.href;
+            // 始终使用永久GitHub Pages链接
+            const pageUrl = 'https://q61836046-creator.github.io/campus-navigation/校园导航系统.html';
             openModal('分享导航系统', `
                 <div class="share-container">
                     <div class="share-qrcode-section">
@@ -4731,8 +4730,7 @@
                 return;
             }
             const locUrl = `https://uri.amap.com/marker?position=${currentPos[0]},${currentPos[1]}&name=我的位置&callnative=1`;
-            const pageUrl = (window.location.protocol === 'file:') ? 'https://q61836046-creator.github.io/campus-navigation/' : window.location.href;
-            const shareUrl = `https://q61836046-creator.github.io/campus-navigation/?lat=${currentPos[1]}&lng=${currentPos[0]}`;
+            const shareUrl = `https://q61836046-creator.github.io/campus-navigation/校园导航系统.html?lat=${currentPos[1]}&lng=${currentPos[0]}`;
 
             openModal('分享位置', `
                 <div class="share-container">
