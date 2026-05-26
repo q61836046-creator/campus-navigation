@@ -3698,46 +3698,60 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     function(position) {
+                        locationSource = 'gps';
                         const gpsPos = [position.coords.longitude, position.coords.latitude];
                         convertAndLocateGPS(gpsPos);
-                        setTimeout(() => {
-                            locationBtn.classList.remove('locating');
-                            locationBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>定位成功</span>`;
-                            showTip('定位成功，已移动到您的位置');
-                            setTimeout(() => {
-                                locationBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>我的位置</span>`;
-                            }, 3000);
-                        }, 500);
+                        resetLocationBtn(locationBtn, true);
+                        showTip('GPS定位成功，已移动到您的位置');
                     },
                     function(error) {
-                        // GPS失败，降级到高德定位
-                        showTip('GPS定位不可用，使用网络定位...');
+                        console.log('手动GPS定位失败: ', error.code, error.message);
+                        showTip('GPS不可用，尝试网络定位...');
                         manualLocateByAMap();
                     },
-                    { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 }
+                    { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
                 );
             } else {
                 manualLocateByAMap();
             }
         }
 
+        function resetLocationBtn(btn, success) {
+            btn.classList.remove('locating');
+            if (success) {
+                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>定位成功</span>`;
+            } else {
+                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>定位失败</span>`;
+            }
+            setTimeout(() => {
+                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>我的位置</span>`;
+            }, 3000);
+        }
+
         function manualLocateByAMap() {
             const locationBtn = document.getElementById('locationBtn');
             AMap.plugin('AMap.Geolocation', function() {
-                var geo = new AMap.Geolocation({ enableHighAccuracy: true, timeout: 10000, showCircle: true, showMarker: false, convert: true });
+                var geo = new AMap.Geolocation({ 
+                    enableHighAccuracy: true, 
+                    timeout: 8000, 
+                    showCircle: false, 
+                    showMarker: false, 
+                    convert: true,
+                    panToLocation: false
+                });
                 geo.getCurrentPosition(function(status, result) {
-                    locationBtn.classList.remove('locating');
-                    if (status === 'complete') {
-                        onLocationSuccess([result.position.lng, result.position.lat], result.accuracy);
-                        locationBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>定位成功</span>`;
+                    if (status === 'complete' && result && result.position) {
+                        locationSource = 'network';
+                        onLocationSuccess([result.position.lng, result.position.lat], result.accuracy || 50);
+                        resetLocationBtn(locationBtn, true);
                         showTip('网络定位成功，已移动到您的位置');
                     } else {
-                        locationBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>定位失败</span>`;
-                        showTip('定位失败，请检查网络和位置权限');
+                        console.log('手动高德定位失败: ', status, result);
+                        resetLocationBtn(locationBtn, false);
+                        // 最终降级到校园中心
+                        fallbackToCampusCenter();
+                        showTip('定位不可用，已跳转到校园中心，可手动点击地图设置起点');
                     }
-                    setTimeout(() => {
-                        locationBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>我的位置</span>`;
-                    }, 3000);
                 });
             });
         }
@@ -3784,47 +3798,84 @@
             return directionIcons['default'];
         }
 
+        // 定位来源追踪
+        var locationSource = 'none';
+
         function initGeolocation() {
             const tip = document.getElementById('tip');
             // 非HTTPS环境直接使用高德定位
             if (!isSecureContext()) {
                 tip.innerText = '使用网络定位...';
                 tip.style.display = 'block';
-                setTimeout(() => { initAMapGeolocation(); }, 500);
+                setTimeout(() => { initAMapGeolocation(); }, 300);
                 return;
             }
             if (navigator.geolocation) {
-                tip.innerText = '正在获取GPS定位...';
+                tip.innerText = '正在定位...';
                 tip.style.display = 'block';
                 navigator.geolocation.getCurrentPosition(
                     function(position) {
+                        locationSource = 'gps';
                         const gpsPos = [position.coords.longitude, position.coords.latitude];
                         convertAndLocateGPS(gpsPos);
                     },
                     function(error) {
-                        tip.innerText = 'GPS定位失败，尝试网络定位...';
-                        setTimeout(() => { initAMapGeolocation(); }, 1500);
+                        console.log('GPS定位失败: ', error.code, error.message);
+                        tip.innerText = '正在网络定位...';
+                        initAMapGeolocation();
                     },
-                    { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 }
+                    { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
                 );
             } else {
-                tip.innerText = '浏览器不支持GPS，使用网络定位...';
-                setTimeout(() => { initAMapGeolocation(); }, 1000);
+                tip.innerText = '正在网络定位...';
+                setTimeout(() => { initAMapGeolocation(); }, 300);
             }
         }
 
         function initAMapGeolocation() {
             AMap.plugin('AMap.Geolocation', function() {
-                geolocation = new AMap.Geolocation({ enableHighAccuracy: true, timeout: 15000, showCircle: true, showMarker: false, convert: true });
+                geolocation = new AMap.Geolocation({ 
+                    enableHighAccuracy: true, 
+                    timeout: 8000, 
+                    showCircle: false, 
+                    showMarker: false, 
+                    convert: true,
+                    panToLocation: false
+                });
                 geolocation.getCurrentPosition(function(status, result) {
-                    if (status === 'complete') {
-                        onLocationSuccess([result.position.lng, result.position.lat], result.accuracy);
-                        showTip('定位成功');
+                    const tip = document.getElementById('tip');
+                    if (status === 'complete' && result && result.position) {
+                        locationSource = 'network';
+                        onLocationSuccess([result.position.lng, result.position.lat], result.accuracy || 50);
+                        tip.innerText = '定位成功，已设为起点';
                     } else {
-                        showTip('定位失败，请检查网络');
+                        console.log('高德定位失败: ', status, result);
+                        tip.innerText = '定位不可用，显示校园中心';
+                        // 最终降级：显示校园中心位置
+                        fallbackToCampusCenter();
                     }
+                    setTimeout(() => { tip.style.display = 'none'; }, 2000);
                 });
             });
+        }
+
+        // 最终降级方案：定位到云师大呈贡校区中心
+        function fallbackToCampusCenter() {
+            var campusCenter = [102.8432, 24.8591];
+            currentPos = campusCenter;
+            start = campusCenter;
+            locationSource = 'fallback';
+            
+            // 创建起点标记
+            if (startMarker) { map.remove(startMarker); }
+            startMarker = new AMap.Marker({
+                position: campusCenter,
+                icon: 'https://webapi.amap.com/theme/v1.3/markers/b/mark_start.png'
+            });
+            map.add(startMarker);
+            map.setCenter(campusCenter);
+            map.setZoom(16);
+            showTip('已定位到校园中心，可手动点击地图设置起点');
         }
 
         function onLocationSuccess(position, accuracy) {
@@ -3837,27 +3888,33 @@
                 });
                 map.add(currentPositionMarker);
 
-                if (accuracy > 0) {
+                if (accuracy > 0 && accuracy < 5000) {
                     if (window.accuracyCircle) map.remove(window.accuracyCircle);
-                    window.accuracyCircle = new AMap.Circle({ center: currentPos, radius: accuracy, strokeColor: '#4285f4', strokeOpacity: 0.5, strokeWeight: 1, fillColor: '#4285f4', fillOpacity: 0.15 });
+                    window.accuracyCircle = new AMap.Circle({ center: currentPos, radius: Math.min(accuracy, 500), strokeColor: '#4285f4', strokeOpacity: 0.5, strokeWeight: 1, fillColor: '#4285f4', fillOpacity: 0.15 });
                     map.add(window.accuracyCircle);
                 }
 
                 if (!start) {
                     start = currentPos;
+                    if (startMarker) { map.remove(startMarker); }
                     startMarker = new AMap.Marker({ position: currentPos, icon: "https://webapi.amap.com/theme/v1.3/markers/b/mark_start.png" });
                     map.add(startMarker);
                     const tip = document.getElementById('tip');
                     const accuracyText = accuracy > 0 ? ` (精度±${Math.round(accuracy)}米)` : '';
-                    tip.innerText = accuracy > 50 ? `定位成功${accuracyText}，位置可能有偏差` : `定位成功${accuracyText}，已设为起点`;
+                    var srcLabel = locationSource === 'gps' ? 'GPS' : locationSource === 'network' ? '网络' : '';
+                    tip.innerText = accuracy > 50 ? `${srcLabel}定位成功${accuracyText}，位置可能有偏差` : `${srcLabel}定位成功${accuracyText}，已设为起点`;
                     tip.style.display = 'block';
                     setTimeout(() => { tip.style.display = 'none'; }, 3000);
                 }
             } else {
                 currentPositionMarker.setPosition(currentPos);
-                if (window.accuracyCircle) window.accuracyCircle.setCenter(currentPos);
+                if (window.accuracyCircle && accuracy > 0) {
+                    window.accuracyCircle.setCenter(currentPos);
+                    window.accuracyCircle.setRadius(Math.min(accuracy, 500));
+                }
             }
             map.setCenter(currentPos);
+            if (!start) { map.setZoom(17); }
         }
 
         function convertAndLocateGPS(gpsPos) {
@@ -3884,10 +3941,10 @@
 
             if (isSecureContext() && navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(pos) { onWatchPosition(pos); }, function(error) {
-                    console.log('GPS初始化失败，使用网络定位');
+                    console.log('导航GPS初始化失败，使用网络定位');
                     startAMapWatch();
-                }, { enableHighAccuracy: true, timeout: 8000 });
-                watchId = navigator.geolocation.watchPosition(onWatchPosition, onWatchError, { enableHighAccuracy: true, maximumAge: 0, timeout: 10000 });
+                }, { enableHighAccuracy: true, timeout: 5000 });
+                watchId = navigator.geolocation.watchPosition(onWatchPosition, onWatchError, { enableHighAccuracy: true, maximumAge: 0, timeout: 8000 });
             } else {
                 startAMapWatch();
             }
@@ -3896,19 +3953,20 @@
         var amapWatchInterval = null;
         function startAMapWatch() {
             AMap.plugin('AMap.Geolocation', function() {
-                var geo = new AMap.Geolocation({ enableHighAccuracy: true, timeout: 10000, convert: true });
-                // 首次定位
+                var geo = new AMap.Geolocation({ enableHighAccuracy: true, timeout: 8000, convert: true, panToLocation: false });
                 geo.getCurrentPosition(function(status, result) {
-                    if (status === 'complete') {
-                        onLocationSuccess([result.position.lng, result.position.lat], result.accuracy);
+                    if (status === 'complete' && result && result.position) {
+                        locationSource = 'network';
+                        onLocationSuccess([result.position.lng, result.position.lat], result.accuracy || 50);
                         document.getElementById('navGpsStatus').innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" style="color:#4caf50"><circle cx="12" cy="12" r="3"></circle></svg>网络定位中`;
+                    } else {
+                        document.getElementById('navGpsStatus').innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" style="color:#ff9800"><circle cx="12" cy="12" r="3"></circle></svg>网络定位失败`;
                     }
                 });
-                // 定时更新位置
                 amapWatchInterval = setInterval(function() {
                     geo.getCurrentPosition(function(status, result) {
-                        if (status === 'complete') {
-                            onWatchPosition({ coords: { longitude: result.position.lng, latitude: result.position.lat, accuracy: result.accuracy } });
+                        if (status === 'complete' && result && result.position) {
+                            onWatchPosition({ coords: { longitude: result.position.lng, latitude: result.position.lat, accuracy: result.accuracy || 50 } });
                         }
                     });
                 }, 5000);
