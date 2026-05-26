@@ -2268,6 +2268,159 @@
             from { opacity: 0; transform: translateX(-50%) translateY(20px); }
             to { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
+
+        /* ========== 校园建筑标记 ========== */
+        .building-marker-popup {
+            min-width: 180px;
+            padding: 4px;
+        }
+        .building-marker-popup h4 {
+            margin: 0 0 6px; font-size:14px; color:#667eea;
+        }
+        .building-marker-popup p {
+            margin: 0; font-size:11px; color:#666; line-height:1.5;
+        }
+        .building-marker-popup .meta {
+            display: flex; gap: 12px; font-size:10px; color:#999; margin-top: 6px;
+        }
+        .building-marker-popup .actions {
+            display: flex; gap: 6px; margin-top: 8px;
+        }
+        .building-marker-popup .actions button {
+            flex:1; padding: 5px 8px; border-radius: 6px; border: none;
+            font-size: 11px; cursor: pointer; color: #fff; font-weight: 600;
+        }
+        .btn-go { background: linear-gradient(135deg,#667eea,#764ba2); }
+        .btn-detail { background: #ff9800; }
+
+        /* ========== 校车时刻表 ========== */
+        .bus-schedule-card {
+            background: linear-gradient(135deg,#2196f315,#00bcd415);
+            border-radius: 12px; padding: 12px 14px;
+            border: 1px solid rgba(33,150,243,0.15);
+        }
+        .bus-route-tabs {
+            display: flex; gap: 4px; margin-bottom: 8px; flex-wrap: wrap;
+        }
+        .bus-route-tab {
+            padding: 5px 10px; border-radius: 12px; border: 1px solid var(--border-color);
+            background: var(--bg-secondary); font-size: 10px; cursor: pointer;
+            color: var(--text-secondary); transition: all 0.2s;
+        }
+        .bus-route-tab.active {
+            background: linear-gradient(135deg,#2196f3,#00bcd4);
+            color: #fff; border-color: transparent;
+        }
+        .bus-time-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 6px 8px; font-size: 11px; border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+        .bus-time-item:last-child { border-bottom: none; }
+        .bus-time-status { font-size: 9px; padding: 2px 8px; border-radius: 8px; }
+        .bus-time-status.running { background: #4caf5020; color: #4caf50; }
+        .bus-time-status.upcoming { background: #ff980020; color: #ff9800; }
+        .bus-time-status.ended { background: #f4433620; color: #f44336; }
+        .bus-detail-row { display: flex; gap: 20px; font-size: 10px; color: var(--text-secondary); }
+
+        /* ========== 打卡签到 ========== */
+        .checkin-card {
+            background: linear-gradient(135deg,#ff980015,#f4433615);
+            border-radius: 12px; padding: 12px 14px;
+            border: 1px solid rgba(255,152,0,0.15);
+        }
+        .checkin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .checkin-place {
+            padding: 8px; border-radius: 10px; background: var(--bg-secondary);
+            border: 1px solid var(--border-color); cursor: pointer;
+            transition: all 0.2s; text-align: center;
+        }
+        .checkin-place:hover { border-color: #ff9800; transform: translateY(-1px); }
+        .checkin-place.checked { border-color: #4caf50; background: #4caf5010; }
+        .checkin-place svg { width: 24px; height: 24px; display: block; margin: 0 auto 4px; }
+        .checkin-place-name { font-size: 10px; color: var(--text-primary); font-weight: 600; }
+        .checkin-place-time { font-size: 9px; color: var(--text-secondary); }
+        .checkin-badge {
+            display: inline-block; padding: 2px 8px; border-radius: 10px;
+            background: linear-gradient(135deg,#ff9800,#f44336); color: #fff; font-size: 9px;
+            font-weight: 600; margin-top: 4px;
+        }
+        .checkin-list { max-height: 150px; overflow-y: auto; margin-top: 8px; }
+        .checkin-record {
+            display: flex; align-items: center; gap: 8px; padding: 6px 8px;
+            font-size: 10px; color: var(--text-primary); border-bottom: 1px solid var(--border-color);
+        }
+        .checkin-record:last-child { border-bottom: none; }
+        .checkin-record svg { width: 14px; height: 14px; color: #4caf50; flex-shrink: 0; }
+
+        /* ========== 失物招领 ========== */
+        .lostfound-card {
+            background: linear-gradient(135deg,#9c27b015,#e91e6315);
+            border-radius: 12px; padding: 12px 14px;
+            border: 1px solid rgba(156,39,176,0.15);
+        }
+        .lostfound-tabs { display: flex; gap: 4px; margin-bottom: 8px; }
+        .lostfound-tab {
+            flex: 1; padding: 6px; border-radius: 8px; border: 1px solid var(--border-color);
+            background: var(--bg-secondary); font-size: 11px; cursor: pointer;
+            text-align: center; color: var(--text-secondary); transition: all 0.2s;
+        }
+        .lostfound-tab.active {
+            background: linear-gradient(135deg,#9c27b0,#e91e63);
+            color: #fff; border-color: transparent;
+        }
+        .lostfound-item {
+            display: flex; gap: 8px; align-items: center; padding: 8px;
+            background: var(--bg-secondary); border-radius: 8px; margin-bottom: 6px;
+            font-size: 11px; cursor: pointer; transition: all 0.2s;
+        }
+        .lostfound-item:hover { background: var(--bg-primary); }
+        .lostfound-icon {
+            width: 36px; height: 36px; border-radius: 8px; display: flex;
+            align-items: center; justify-content: center; flex-shrink: 0;
+            font-size: 18px;
+        }
+        .lostfound-icon.lost { background: #f4433620; }
+        .lostfound-icon.found { background: #4caf5020; }
+        .lostfound-info { flex: 1; min-width: 0; }
+        .lostfound-title { font-weight: 600; color: var(--text-primary); }
+        .lostfound-desc { font-size: 10px; color: var(--text-secondary); margin-top: 2px; }
+        .lostfound-time { font-size: 9px; color: var(--text-secondary); }
+        .lostfound-form {
+            display: flex; flex-direction: column; gap: 8px; margin-top: 8px;
+        }
+        .lostfound-form input, .lostfound-form textarea {
+            padding: 8px; border-radius: 8px; border: 1px solid var(--border-color);
+            background: var(--bg-secondary); color: var(--text-primary); font-size: 12px;
+            outline: none;
+        }
+        .lostfound-form textarea { height: 60px; resize: vertical; }
+        .lostfound-submit {
+            padding: 8px; border-radius: 8px; border: none;
+            background: linear-gradient(135deg,#9c27b0,#e91e63);
+            color: #fff; font-size: 12px; font-weight: 600; cursor: pointer;
+        }
+
+        /* ========== 测距工具 ========== */
+        .measure-btn {
+            width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border-color);
+            background: var(--bg-card); backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-primary); transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .measure-btn:hover { transform: translateY(-2px); }
+        .measure-btn.active {
+            background: linear-gradient(135deg,#f44336,#e91e63); color: #fff; border-color: transparent;
+        }
+        .measure-result {
+            position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.8); color: #fff; padding: 8px 20px;
+            border-radius: 20px; font-size: 14px; font-weight: 600; z-index: 9999;
+            display: none;
+        }
+        .measure-result.show { display: block; }
     </style>
 
     <script>
@@ -2352,7 +2505,16 @@
                 <line x1="12" y1="4" x2="12" y2="20"></line>
             </svg>
         </button>
+        <button class="toolbar-btn" id="measureBtn" title="测距工具" onclick="toggleMeasure()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+            </svg>
+        </button>
     </div>
+
+    <!-- 测距结果显示 -->
+    <div class="measure-result" id="measureResult">总距离: <span id="measureDistance">0</span> 米</div>
 
     <!-- 左侧边栏 -->
     <div class="sidebar" id="sidebar">
@@ -2657,6 +2819,74 @@
                 </div>
             </div>
             <div class="hot-tags" id="hotTags"></div>
+        </div>
+
+        <!-- 校园建筑标记开关 -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--text-secondary);">校园建筑标记</span>
+            <label class="switch-label">
+                <input type="checkbox" id="buildingMarkersToggle" checked onchange="toggleBuildingMarkers()" style="display:none;">
+                <span class="switch-slider" id="buildingSwitchSlider" style="width:40px;height:22px;border-radius:11px;background:linear-gradient(135deg,#667eea,#764ba2);display:inline-block;position:relative;cursor:pointer;transition:all 0.3s;">
+                    <span style="position:absolute;top:3px;right:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:all 0.3s;"></span>
+                </span>
+            </label>
+        </div>
+
+        <!-- 校车时刻表 -->
+        <div class="bus-schedule-card">
+            <div class="card-header">
+                <div class="card-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#2196f3" stroke-width="2">
+                        <rect x="1" y="3" width="15" height="13"></rect>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
+                    校车时刻表
+                </div>
+                <span class="card-action" onclick="refreshBusSchedule()">刷新</span>
+            </div>
+            <div class="bus-route-tabs" id="busRouteTabs"></div>
+            <div id="busTimeList">
+                <div style="text-align:center;color:var(--text-secondary);font-size:11px;padding:10px;">加载班车信息中...</div>
+            </div>
+        </div>
+
+        <!-- 打卡签到 -->
+        <div class="checkin-card">
+            <div class="card-header">
+                <div class="card-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#ff9800" stroke-width="2">
+                        <path d="M9 11l3 3L22 4"></path>
+                        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                    </svg>
+                    校园打卡 <span class="checkin-badge" id="checkinCount">0/8</span>
+                </div>
+                <span class="card-action" onclick="showCheckinHistory()">记录</span>
+            </div>
+            <div class="checkin-grid" id="checkinGrid"></div>
+        </div>
+
+        <!-- 失物招领 -->
+        <div class="lostfound-card">
+            <div class="card-header">
+                <div class="card-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#9c27b0" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    失物招领
+                </div>
+                <span class="card-action" onclick="openLostFoundPublish()">发布</span>
+            </div>
+            <div class="lostfound-tabs">
+                <div class="lostfound-tab active" onclick="switchLostFound('lost', this)">寻物启事</div>
+                <div class="lostfound-tab" onclick="switchLostFound('found', this)">失物招领</div>
+            </div>
+            <div id="lostfoundList">
+                <div style="text-align:center;color:var(--text-secondary);font-size:11px;padding:10px;">加载中...</div>
+            </div>
         </div>
 
         <!-- 实时导航面板 -->
@@ -3686,10 +3916,12 @@
 
         function manualLocate() {
             const locationBtn = document.getElementById('locationBtn');
+            // 重置按钮状态
+            locationBtn.classList.remove('locating');
             locationBtn.classList.add('locating');
             locationBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>定位中...</span>`;
 
-            // 非HTTPS环境直接使用高德定位
+            // 非HTTPS环境（包括 file:// 协议）直接尝试高德网络定位+IP定位兜底
             if (!isSecureContext()) {
                 manualLocateByAMap();
                 return;
@@ -3700,17 +3932,11 @@
                     function(position) {
                         const gpsPos = [position.coords.longitude, position.coords.latitude];
                         convertAndLocateGPS(gpsPos);
-                        setTimeout(() => {
-                            locationBtn.classList.remove('locating');
-                            locationBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>定位成功</span>`;
-                            showTip('定位成功，已移动到您的位置');
-                            setTimeout(() => {
-                                locationBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>我的位置</span>`;
-                            }, 3000);
-                        }, 500);
+                        resetLocateBtnSuccess(locationBtn, 'GPS定位成功，已移动到您的位置');
                     },
                     function(error) {
                         // GPS失败，降级到高德定位
+                        console.log('浏览器GPS定位失败，错误码：' + error.code + '，使用网络定位...');
                         showTip('GPS定位不可用，使用网络定位...');
                         manualLocateByAMap();
                     },
@@ -3721,23 +3947,71 @@
             }
         }
 
+        function resetLocateBtnSuccess(btn, tipMsg) {
+            btn.classList.remove('locating');
+            btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>定位成功</span>`;
+            showTip(tipMsg);
+            setTimeout(() => {
+                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>我的位置</span>`;
+            }, 3000);
+        }
+
+        function resetLocateBtnFail(btn, tipMsg) {
+            btn.classList.remove('locating');
+            btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>定位失败</span>`;
+            showTip(tipMsg);
+            setTimeout(() => {
+                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>我的位置</span>`;
+            }, 4000);
+        }
+
         function manualLocateByAMap() {
             const locationBtn = document.getElementById('locationBtn');
             AMap.plugin('AMap.Geolocation', function() {
-                var geo = new AMap.Geolocation({ enableHighAccuracy: true, timeout: 10000, showCircle: true, showMarker: false, convert: true });
+                var geo = new AMap.Geolocation({ 
+                    enableHighAccuracy: true, 
+                    timeout: 10000, 
+                    showCircle: true, 
+                    showMarker: false, 
+                    convert: true,
+                    GeoLocationFirst: true
+                });
                 geo.getCurrentPosition(function(status, result) {
-                    locationBtn.classList.remove('locating');
-                    if (status === 'complete') {
+                    if (status === 'complete' && result && result.position) {
                         onLocationSuccess([result.position.lng, result.position.lat], result.accuracy);
-                        locationBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>定位成功</span>`;
-                        showTip('网络定位成功，已移动到您的位置');
+                        resetLocateBtnSuccess(locationBtn, '网络定位成功，已移动到您的位置');
                     } else {
-                        locationBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>定位失败</span>`;
-                        showTip('定位失败，请检查网络和位置权限');
+                        // 高精度定位失败，使用IP定位兜底
+                        console.log('高德高精度定位失败，尝试IP定位...');
+                        manualLocateByIP();
                     }
-                    setTimeout(() => {
-                        locationBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg><span>我的位置</span>`;
-                    }, 3000);
+                });
+            });
+        }
+
+        // IP定位兜底方案（不需要浏览器GPS权限，纯网络请求）
+        function manualLocateByIP() {
+            const locationBtn = document.getElementById('locationBtn');
+            AMap.plugin('AMap.Geolocation', function() {
+                var geoIP = new AMap.Geolocation({ 
+                    enableHighAccuracy: false, 
+                    timeout: 5000,       // IP定位很快，5秒足够
+                    showCircle: true, 
+                    showMarker: false, 
+                    convert: true,
+                    noGeoLocation: 1    // 强制使用IP定位，不依赖浏览器GPS
+                });
+                geoIP.getCurrentPosition(function(status, result) {
+                    if (status === 'complete' && result && result.position) {
+                        onLocationSuccess([result.position.lng, result.position.lat], result.accuracy || 1000);
+                        resetLocateBtnSuccess(locationBtn, 'IP定位成功（精度较低），已移动到大致位置');
+                    } else {
+                        // 最终兜底：定位到校园中心
+                        console.log('所有定位方式均失败，使用校园默认位置');
+                        var defaultPos = [102.8512, 24.8492]; // 云南师范大学呈贡校区默认坐标
+                        onLocationSuccess(defaultPos, 2000);
+                        resetLocateBtnFail(locationBtn, '无法定位，已显示校园中心位置。请检查网络连接');
+                    }
                 });
             });
         }
@@ -3815,13 +4089,32 @@
 
         function initAMapGeolocation() {
             AMap.plugin('AMap.Geolocation', function() {
-                geolocation = new AMap.Geolocation({ enableHighAccuracy: true, timeout: 15000, showCircle: true, showMarker: false, convert: true });
+                geolocation = new AMap.Geolocation({ enableHighAccuracy: true, timeout: 15000, showCircle: true, showMarker: false, convert: true, GeoLocationFirst: true });
                 geolocation.getCurrentPosition(function(status, result) {
-                    if (status === 'complete') {
+                    if (status === 'complete' && result && result.position) {
                         onLocationSuccess([result.position.lng, result.position.lat], result.accuracy);
                         showTip('定位成功');
                     } else {
-                        showTip('定位失败，请检查网络');
+                        // 高精度定位失败，使用IP定位兜底
+                        console.log('页面加载高精度定位失败，尝试IP定位...');
+                        initAMapGeolocationByIP();
+                    }
+                });
+            });
+        }
+
+        function initAMapGeolocationByIP() {
+            AMap.plugin('AMap.Geolocation', function() {
+                var geoIP = new AMap.Geolocation({ enableHighAccuracy: false, timeout: 5000, showCircle: true, showMarker: false, convert: true, noGeoLocation: 1 });
+                geoIP.getCurrentPosition(function(status, result) {
+                    if (status === 'complete' && result && result.position) {
+                        onLocationSuccess([result.position.lng, result.position.lat], result.accuracy || 1000);
+                        showTip('IP定位成功（精度较低）');
+                    } else {
+                        console.log('IP定位也失败，使用校园默认位置');
+                        var defaultPos = [102.8512, 24.8492];
+                        onLocationSuccess(defaultPos, 2000);
+                        showTip('无法自动定位，已显示校园中心。点击"我的位置"重试');
                     }
                 });
             });
@@ -4185,6 +4478,8 @@
         let start = null, end = null, startMarker, endMarker, startName = '', endName = '';
 
         map.on("click", (e) => {
+            // 测距模式下处理测距，不处理路线规划
+            if (measureActive) { addMeasureMarker(e); return; }
             const pos = [e.lnglat.lng, e.lnglat.lat];
             searchResult.classList.remove("show");
             if (!start) {
@@ -4514,12 +4809,546 @@
             loadRouteFavorites();
             loadStats();
             applyFontSize();
+            initBuildingMarkers();
+            initBusSchedule();
+            initCheckin();
+            initLostFound();
+            initMeasureTool();
         }
 
         initAllNewFeatures();
 
         // 定时更新推荐（每小时刷新一次）
         setInterval(() => { renderRecommendations(); renderHotTags(); }, 60 * 60 * 1000);
+
+        // ==============================================
+        // 校园建筑标记
+        // ==============================================
+        const campusBuildings = [
+            { name: '图书馆', lng: 102.8430, lat: 24.8596, type: 'academic', icon: '📚', desc: '呈贡校区主图书馆，藏书数百万册，设有自习室、电子阅览室、研讨间等', hours: '08:00-22:00', rating: 4.8 },
+            { name: '明德楼', lng: 102.8442, lat: 24.8590, type: 'teaching', icon: '🏫', desc: '主要教学楼之一，设有多媒体教室、阶梯教室', hours: '07:30-22:00', rating: 4.5 },
+            { name: '汇学楼', lng: 102.8425, lat: 24.8600, type: 'teaching', icon: '🏛️', desc: '文科教学楼，文史哲学院主要教学场所', hours: '07:30-22:00', rating: 4.3 },
+            { name: '睿智楼', lng: 102.8435, lat: 24.8585, type: 'teaching', icon: '🏢', desc: '理工科教学楼，设有实验室和计算机房', hours: '07:30-22:00', rating: 4.4 },
+            { name: '一食堂', lng: 102.8448, lat: 24.8595, type: 'canteen', icon: '🍜', desc: '主营云南特色菜、米线、小炒，一楼二楼均可用餐', hours: '06:30-13:00 / 16:30-19:30', rating: 4.2 },
+            { name: '二食堂', lng: 102.8420, lat: 24.8588, type: 'canteen', icon: '🍚', desc: '川菜、湘菜风味为主，有清真窗口', hours: '06:30-13:00 / 16:30-19:30', rating: 4.4 },
+            { name: '三食堂', lng: 102.8450, lat: 24.8602, type: 'canteen', icon: '🥘', desc: '回民餐厅及各地风味小吃', hours: '06:30-13:00 / 16:30-19:30', rating: 4.1 },
+            { name: '体育馆', lng: 102.8418, lat: 24.8605, type: 'sports', icon: '🏟️', desc: '综合体育馆，含篮球场、羽毛球馆、游泳馆、健身房', hours: '08:00-21:00', rating: 4.6 },
+            { name: '田径场', lng: 102.8415, lat: 24.8610, type: 'sports', icon: '⚽', desc: '标准400米跑道，足球场，看台', hours: '06:00-21:00', rating: 4.5 },
+            { name: '篮球场', lng: 102.8422, lat: 24.8615, type: 'sports', icon: '🏀', desc: '室外篮球场，共12块场地', hours: '06:00-22:00', rating: 4.3 },
+            { name: '校医院', lng: 102.8445, lat: 24.8578, type: 'health', icon: '🏥', desc: '24小时门诊，提供内科、外科、急诊、体检服务', hours: '24小时', rating: 4.0 },
+            { name: '北门', lng: 102.8432, lat: 24.8615, type: 'gate', icon: '🚪', desc: '校园北门，紧邻联大街地铁站', hours: '全天开放', rating: 4.0 },
+            { name: '南门', lng: 102.8432, lat: 24.8570, type: 'gate', icon: '🚪', desc: '校园南门，主要出入口之一', hours: '全天开放', rating: 4.0 },
+            { name: '东门', lng: 102.8460, lat: 24.8591, type: 'gate', icon: '🚪', desc: '校园东门', hours: '06:00-23:00', rating: 4.0 },
+            { name: '西苑宿舍区', lng: 102.8425, lat: 24.8580, type: 'dorm', icon: '🏠', desc: '西区学生宿舍，含本科及研究生宿舍', hours: '', rating: 4.0 },
+            { name: '东苑宿舍区', lng: 102.8455, lat: 24.8590, type: 'dorm', icon: '🏡', desc: '东区学生宿舍，临近东门和运动场', hours: '', rating: 4.0 },
+            { name: '行政楼', lng: 102.8438, lat: 24.8598, type: 'admin', icon: '🏢', desc: '学校行政办公大楼', hours: '08:30-17:30', rating: 4.0 },
+            { name: '学生活动中心', lng: 102.8440, lat: 24.8575, type: 'activity', icon: '🎭', desc: '社团活动、文艺演出、学生组织办公场所', hours: '08:00-21:00', rating: 4.3 },
+            { name: '快递驿站', lng: 102.8452, lat: 24.8582, type: 'service', icon: '📦', desc: '菜鸟驿站/顺丰/京东快递收发点', hours: '09:00-19:00', rating: 4.0 },
+            { name: '超市', lng: 102.8445, lat: 24.8593, type: 'shop', icon: '🛒', desc: '校园超市，日用品、零食、文具', hours: '07:30-22:30', rating: 4.0 }
+        ];
+
+        let buildingMarkers = [];
+        let buildingMarkersVisible = true;
+
+        function initBuildingMarkers() {
+            // 创建自定义标记图标
+            campusBuildings.forEach((building, index) => {
+                const markerContent = document.createElement('div');
+                markerContent.style.cssText = 'width:32px;height:32px;line-height:32px;text-align:center;font-size:22px;cursor:pointer;transition:transform 0.2s;';
+                markerContent.innerHTML = building.icon;
+                markerContent.title = building.name;
+                markerContent.addEventListener('mouseenter', () => { markerContent.style.transform = 'scale(1.3)'; });
+                markerContent.addEventListener('mouseleave', () => { markerContent.style.transform = 'scale(1)'; });
+
+                const marker = new AMap.Marker({
+                    position: [building.lng, building.lat],
+                    content: markerContent,
+                    offset: new AMap.Pixel(-16, -16),
+                    zIndex: 100 + index
+                });
+
+                // 点击弹出信息窗
+                marker.on('click', () => openBuildingInfo(building));
+                marker.setMap(map);
+                buildingMarkers.push(marker);
+            });
+        }
+
+        function toggleBuildingMarkers() {
+            buildingMarkersVisible = !buildingMarkersVisible;
+            const slider = document.getElementById('buildingSwitchSlider');
+            buildingMarkers.forEach(m => {
+                buildingMarkersVisible ? m.setMap(map) : m.setMap(null);
+            });
+            if (slider) {
+                slider.style.background = buildingMarkersVisible ? 'linear-gradient(135deg,#667eea,#764ba2)' : '#ccc';
+                const dot = slider.querySelector('span');
+                if (dot) dot.style.right = buildingMarkersVisible ? '3px' : '21px';
+            }
+            showTip(buildingMarkersVisible ? '建筑标记已显示' : '建筑标记已隐藏');
+        }
+
+        function openBuildingInfo(building) {
+            const starStr = '★'.repeat(Math.floor(building.rating)) + '☆'.repeat(5 - Math.floor(building.rating));
+            openModal(building.name, `
+                <div class="place-detail-header">
+                    <div class="place-detail-icon" style="background:linear-gradient(135deg,#667eea,#764ba2);font-size:28px;display:flex;align-items:center;justify-content:center;">${building.icon}</div>
+                    <div class="place-detail-info">
+                        <div class="place-detail-name">${building.name}</div>
+                        <div class="place-detail-rating">${starStr} ${building.rating}</div>
+                    </div>
+                </div>
+                <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom: 12px;">${building.desc}</p>
+                ${building.hours ? `<div class="place-detail-meta"><div class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${building.hours}</div><div class="place-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>呈贡校区</div></div>` : ''}
+                <div class="place-actions">
+                    <button class="place-action-btn primary" onclick="navigateToBuilding('${building.name}', ${building.lng}, ${building.lat});closeModal();">导航到此</button>
+                    <button class="place-action-btn secondary" onclick="addFavorite({name:'${building.name}',location:{lng:${building.lng},lat:${building.lat}}});closeModal();">收藏</button>
+                </div>
+            `);
+        }
+
+        function navigateToBuilding(name, lng, lat) {
+            const pos = [lng, lat];
+            if (endMarker) map.remove(endMarker);
+            endMarker = new AMap.Marker({ position: pos, icon: 'https://webapi.amap.com/theme/v1.3/markers/b/mark_end.png', title: name });
+            map.add(endMarker);
+            map.setCenter(pos);
+            map.setZoom(18);
+            addHistory(name, { lng, lat });
+            if (start) { end = pos; walking.search(start, end); document.getElementById('clearRouteBtn').style.display = 'flex'; showRealtimeNav(); }
+            showTip('已导航至：' + name);
+        }
+
+        // ==============================================
+        // 校车/摆渡车时刻表
+        // ==============================================
+        const busRoutes = {
+            'route1': {
+                name: '校内环线A',
+                stations: ['北门→一食堂→图书馆→行政楼→体育馆→东门→南门→北门'],
+                desc: '逆时针环行，每20分钟一班',
+                schedule: [
+                    { time: '07:00', status: 'ended' },
+                    { time: '07:20', status: 'ended' },
+                    { time: '07:40', status: 'ended' },
+                    { time: '08:00', status: 'running' },
+                    { time: '08:20', status: 'upcoming' },
+                    { time: '08:40', status: 'upcoming' },
+                    { time: '09:00', status: 'upcoming' },
+                    { time: '09:20', status: 'upcoming' },
+                    { time: '09:40', status: 'upcoming' },
+                    { time: '10:00', status: 'upcoming' }
+                ]
+            },
+            'route2': {
+                name: '校内环线B',
+                stations: ['南门→东门→体育馆→行政楼→图书馆→一食堂→北门→南门'],
+                desc: '顺时针环行，每20分钟一班',
+                schedule: [
+                    { time: '07:10', status: 'ended' },
+                    { time: '07:30', status: 'ended' },
+                    { time: '07:50', status: 'ended' },
+                    { time: '08:10', status: 'running' },
+                    { time: '08:30', status: 'upcoming' },
+                    { time: '08:50', status: 'upcoming' },
+                    { time: '09:10', status: 'upcoming' },
+                    { time: '09:30', status: 'upcoming' },
+                    { time: '09:50', status: 'upcoming' },
+                    { time: '10:10', status: 'upcoming' }
+                ]
+            },
+            'route3': {
+                name: '地铁接驳线',
+                stations: ['北门→联大街地铁站→北门'],
+                desc: '往返地铁接驳，高峰期每10分钟一班',
+                schedule: [
+                    { time: '07:00', status: 'ended' },
+                    { time: '07:15', status: 'ended' },
+                    { time: '07:30', status: 'ended' },
+                    { time: '08:00', status: 'running' },
+                    { time: '08:30', status: 'upcoming' },
+                    { time: '09:00', status: 'upcoming' }
+                ]
+            }
+        };
+        let currentBusRoute = 'route1';
+
+        function initBusSchedule() {
+            renderBusRouteTabs();
+            renderBusSchedule();
+        }
+
+        function renderBusRouteTabs() {
+            const tabsEl = document.getElementById('busRouteTabs');
+            if (!tabsEl) return;
+            tabsEl.innerHTML = Object.entries(busRoutes).map(([key, route]) => `
+                <div class="bus-route-tab ${key === currentBusRoute ? 'active' : ''}" onclick="switchBusRoute('${key}')">${route.name}</div>
+            `).join('');
+        }
+
+        function switchBusRoute(routeId) {
+            currentBusRoute = routeId;
+            renderBusRouteTabs();
+            renderBusSchedule();
+        }
+
+        function refreshBusSchedule() {
+            // 根据当前时间刷新状态
+            const now = new Date();
+            const currentTime = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+            Object.values(busRoutes).forEach(route => {
+                route.schedule.forEach(item => {
+                    if (item.time <= currentTime) item.status = 'ended';
+                    else item.status = 'upcoming';
+                });
+            });
+            renderBusSchedule();
+            showTip('校车时刻已更新');
+        }
+
+        function renderBusSchedule() {
+            const listEl = document.getElementById('busTimeList');
+            if (!listEl) return;
+            const route = busRoutes[currentBusRoute];
+            if (!route) return;
+            const statusMap = { running: '运行中', upcoming: '即将发车', ended: '已发车' };
+            const statusClassMap = { running: 'running', upcoming: 'upcoming', ended: 'ended' };
+            listEl.innerHTML = `
+                <div class="bus-detail-row" style="margin-bottom:6px;justify-content:space-between;">
+                    <span style="color:var(--text-secondary);">${route.stations[0]}</span>
+                    <span style="color:var(--text-secondary);">${route.desc}</span>
+                </div>
+                ${route.schedule.map(item => `
+                    <div class="bus-time-item">
+                        <span style="font-weight:600;font-size:13px;">${item.time}</span>
+                        <span class="bus-time-status ${statusClassMap[item.status]}">${statusMap[item.status]}</span>
+                    </div>
+                `).join('')}
+            `;
+        }
+
+        // ==============================================
+        // 校园打卡签到
+        // ==============================================
+        const CHECKIN_KEY = 'campus_checkin_data';
+        const checkinPlaces = [
+            { id: 'lib', name: '图书馆', icon: '📚', lng: 102.8430, lat: 24.8596 },
+            { id: 'gym', name: '体育馆', icon: '🏟️', lng: 102.8418, lat: 24.8605 },
+            { id: 'canteen', name: '一食堂', icon: '🍜', lng: 102.8448, lat: 24.8595 },
+            { id: 'hospital', name: '校医院', icon: '🏥', lng: 102.8445, lat: 24.8578 },
+            { id: 'track', name: '田径场', icon: '⚽', lng: 102.8415, lat: 24.8610 },
+            { id: 'teach', name: '明德楼', icon: '🏫', lng: 102.8442, lat: 24.8590 },
+            { id: 'activity', name: '活动中心', icon: '🎭', lng: 102.8440, lat: 24.8575 },
+            { id: 'gate', name: '北门', icon: '🚪', lng: 102.8432, lat: 24.8615 }
+        ];
+        let checkinData = {};
+
+        function loadCheckinData() {
+            const saved = localStorage.getItem(CHECKIN_KEY);
+            checkinData = saved ? JSON.parse(saved) : {};
+        }
+
+        function saveCheckinData() {
+            localStorage.setItem(CHECKIN_KEY, JSON.stringify(checkinData));
+        }
+
+        function initCheckin() {
+            loadCheckinData();
+            renderCheckinGrid();
+            updateCheckinCount();
+        }
+
+        function renderCheckinGrid() {
+            const grid = document.getElementById('checkinGrid');
+            if (!grid) return;
+            grid.innerHTML = checkinPlaces.map(place => {
+                const checked = !!checkinData[place.id];
+                return `
+                    <div class="checkin-place ${checked ? 'checked' : ''}" onclick="doCheckin('${place.id}')">
+                        <div style="font-size:24px;">${place.icon}</div>
+                        <div class="checkin-place-name">${place.name}</div>
+                        ${checked ? `<div class="checkin-place-time">${checkinData[place.id]}</div>` : '<div class="checkin-place-time" style="color:#ff9800;">点击打卡</div>'}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function doCheckin(placeId) {
+            if (!currentPos) {
+                showTip('请先获取定位再打卡');
+                return;
+            }
+            const place = checkinPlaces.find(p => p.id === placeId);
+            if (!place) return;
+
+            // 计算距离，必须在500米内
+            const dist = AMap.GeometryUtil.distance([currentPos[0], currentPos[1]], [place.lng, place.lat]);
+            const mockMode = window.location.protocol === 'file:' || dist > 500;
+            // 模拟模式或实际位置距离判断
+            if (mockMode && !navigator.geolocation) {
+                const now = new Date();
+                checkinData[place.id] = now.getMonth() + 1 + '/' + now.getDate() + ' ' + now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+                saveCheckinData();
+                renderCheckinGrid();
+                updateCheckinCount();
+                showTip('✅ 打卡成功：' + place.name + ' (模拟模式)');
+                if (voiceEnabled) speak('打卡成功，' + place.name);
+                return;
+            }
+            if (dist > 500) {
+                showTip('距' + place.name + '约' + Math.round(dist) + '米，请在500米内打卡');
+                return;
+            }
+            const now = new Date();
+            checkinData[place.id] = now.getMonth() + 1 + '/' + now.getDate() + ' ' + now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+            saveCheckinData();
+            renderCheckinGrid();
+            updateCheckinCount();
+            showTip('✅ 打卡成功：' + place.name);
+            if (voiceEnabled) speak('打卡成功，' + place.name);
+        }
+
+        function updateCheckinCount() {
+            const count = Object.keys(checkinData).length;
+            const badge = document.getElementById('checkinCount');
+            if (badge) badge.textContent = count + '/8';
+        }
+
+        function showCheckinHistory() {
+            const records = Object.entries(checkinData)
+                .map(([id, time]) => {
+                    const place = checkinPlaces.find(p => p.id === id);
+                    return place ? { ...place, time } : null;
+                })
+                .filter(Boolean)
+                .sort((a, b) => b.time.localeCompare(a.time));
+            openModal('打卡记录', `
+                <div class="checkin-list">
+                    ${records.length === 0 ? '<div style="text-align:center;color:var(--text-secondary);padding:20px;">暂无打卡记录</div>' : ''}
+                    ${records.map(r => `
+                        <div class="checkin-record">
+                            <span style="font-size:18px;">${r.icon}</span>
+                            <span style="flex:1;font-weight:600;">${r.name}</span>
+                            <span style="color:var(--text-secondary);">${r.time}</span>
+                        </div>
+                    `).join('')}
+                </div>
+                ${records.length > 0 ? `<button class="feedback-submit" onclick="clearAllCheckins();closeModal();" style="margin-top:10px;background:#f44336;">清除所有记录</button>` : ''}
+            `);
+        }
+
+        function clearAllCheckins() {
+            if (confirm('确定要清除所有打卡记录吗？')) {
+                checkinData = {};
+                saveCheckinData();
+                renderCheckinGrid();
+                updateCheckinCount();
+                showTip('打卡记录已清除');
+            }
+        }
+
+        // ==============================================
+        // 失物招领
+        // ==============================================
+        const LOSTFOUND_KEY = 'campus_lostfound_data';
+        let lostFoundData = [];
+        let lostFoundType = 'lost';
+
+        function loadLostFound() {
+            const saved = localStorage.getItem(LOSTFOUND_KEY);
+            lostFoundData = saved ? JSON.parse(saved) : [
+                { type: 'lost', title: '蓝色水杯', desc: '图书馆二楼自习室遗失，有贴纸装饰', time: '2025-05-20', contact: '13888880001', id: 'lf1' },
+                { type: 'lost', title: '校园卡', desc: '一食堂附近遗失，卡号尾号1234', time: '2025-05-21', contact: '13888880002', id: 'lf2' },
+                { type: 'found', title: '钥匙串', desc: '田径场看台发现，有U盘和几把钥匙', time: '2025-05-22', contact: '13888880003', id: 'lf3' },
+                { type: 'found', title: '耳机', desc: '二食堂门口捡到白色蓝牙耳机', time: '2025-05-23', contact: '13888880004', id: 'lf4' }
+            ];
+        }
+
+        function saveLostFound() {
+            localStorage.setItem(LOSTFOUND_KEY, JSON.stringify(lostFoundData));
+        }
+
+        function initLostFound() {
+            loadLostFound();
+            renderLostFound();
+        }
+
+        function switchLostFound(type, tabEl) {
+            lostFoundType = type;
+            document.querySelectorAll('.lostfound-tab').forEach(t => t.classList.remove('active'));
+            if (tabEl) tabEl.classList.add('active');
+            renderLostFound();
+        }
+
+        function renderLostFound() {
+            const listEl = document.getElementById('lostfoundList');
+            if (!listEl) return;
+            const filtered = lostFoundData.filter(item => item.type === lostFoundType).slice(0, 5);
+            if (filtered.length === 0) {
+                listEl.innerHTML = `<div style="text-align:center;color:var(--text-secondary);font-size:11px;padding:10px;">暂无${lostFoundType === 'lost' ? '寻物' : '招领'}信息</div>`;
+                return;
+            }
+            listEl.innerHTML = filtered.map(item => `
+                <div class="lostfound-item" onclick="showLostFoundDetail('${item.id}')">
+                    <div class="lostfound-icon ${item.type}">${item.type === 'lost' ? '🔍' : '✅'}</div>
+                    <div class="lostfound-info">
+                        <div class="lostfound-title">${item.title}</div>
+                        <div class="lostfound-desc">${item.desc}</div>
+                    </div>
+                    <div class="lostfound-time">${item.time}</div>
+                </div>
+            `).join('');
+        }
+
+        function showLostFoundDetail(id) {
+            const item = lostFoundData.find(i => i.id === id);
+            if (!item) return;
+            openModal(item.title, `
+                <div style="padding: 10px 0;">
+                    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+                        <span class="lostfound-icon ${item.type}" style="width:40px;height:40px;">${item.type === 'lost' ? '🔍' : '✅'}</span>
+                        <span style="font-size:12px;color:var(--text-secondary);">${item.type === 'lost' ? '寻物启事' : '失物招领'}</span>
+                    </div>
+                    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;line-height:1.6;">${item.desc}</p>
+                    <div style="font-size:12px;color:var(--text-secondary);margin-bottom:6px;">🕐 ${item.time}</div>
+                    ${item.contact ? `<div style="font-size:12px;color:var(--text-secondary);margin-bottom:6px;">📞 ${item.contact}</div>` : ''}
+                </div>
+            `);
+        }
+
+        function openLostFoundPublish() {
+            openModal('发布信息', `
+                <div class="lostfound-form">
+                    <select id="lfType" style="padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--bg-secondary);color:var(--text-primary);font-size:12px;outline:none;">
+                        <option value="lost">寻物启事</option>
+                        <option value="found">失物招领</option>
+                    </select>
+                    <input type="text" id="lfTitle" placeholder="物品名称">
+                    <textarea id="lfDesc" placeholder="详细描述（地点、特征等）"></textarea>
+                    <input type="text" id="lfContact" placeholder="联系方式（选填）">
+                    <button class="lostfound-submit" onclick="publishLostFound()">发布</button>
+                </div>
+            `);
+        }
+
+        function publishLostFound() {
+            const title = document.getElementById('lfTitle').value.trim();
+            const desc = document.getElementById('lfDesc').value.trim();
+            const contact = document.getElementById('lfContact').value.trim();
+            const type = document.getElementById('lfType').value;
+            if (!title || !desc) { showTip('请填写物品名称和描述'); return; }
+            const newItem = {
+                id: 'lf' + Date.now(),
+                type,
+                title,
+                desc,
+                contact,
+                time: new Date().toLocaleDateString('zh-CN')
+            };
+            lostFoundData.unshift(newItem);
+            if (lostFoundData.length > 50) lostFoundData = lostFoundData.slice(0, 50);
+            saveLostFound();
+            lostFoundType = type;
+            document.querySelectorAll('.lostfound-tab').forEach((t, i) => {
+                t.classList.toggle('active', i === (type === 'lost' ? 0 : 1));
+            });
+            closeModal();
+            renderLostFound();
+            showTip('发布成功！');
+        }
+
+        // ==============================================
+        // 测距工具
+        // ==============================================
+        let measureActive = false;
+        let measurePoints = [];
+        let measureMarkers = [];
+        let measureLine = null;
+
+        function initMeasureTool() {
+            // no-op, wait for user click
+        }
+
+        function toggleMeasure() {
+            measureActive = !measureActive;
+            const btn = document.getElementById('measureBtn');
+            const resultEl = document.getElementById('measureResult');
+
+            if (measureActive) {
+                btn.classList.add('active');
+                showTip('点击地图开始测距（至少2个点）');
+                map.setDefaultCursor('crosshair');
+            } else {
+                btn.classList.remove('active');
+                clearMeasure();
+                resultEl.classList.remove('show');
+                map.setDefaultCursor('default');
+                showTip('测距已取消');
+            }
+        }
+
+        function addMeasureMarker(e) {
+            if (!measureActive) return;
+            const pos = [e.lnglat.lng, e.lnglat.lat];
+            measurePoints.push(pos);
+
+            const marker = new AMap.Marker({
+                position: pos,
+                content: `<div style="width:12px;height:12px;background:#f44336;border:2px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>`,
+                offset: new AMap.Pixel(-6, -6)
+            });
+            marker.setMap(map);
+            measureMarkers.push(marker);
+
+            updateMeasureDisplay();
+        }
+
+        function updateMeasureDisplay() {
+            const resultEl = document.getElementById('measureResult');
+            const distEl = document.getElementById('measureDistance');
+
+            if (measurePoints.length < 2) {
+                resultEl.classList.remove('show');
+                return;
+            }
+
+            // 清除旧线路
+            if (measureLine) { measureLine.setMap(null); measureLine = null; }
+
+            // 画线
+            measureLine = new AMap.Polyline({
+                path: measurePoints,
+                strokeColor: '#f44336',
+                strokeWeight: 3,
+                strokeStyle: 'dashed',
+                strokeOpacity: 0.8
+            });
+            measureLine.setMap(map);
+
+            // 计算距离
+            let totalDist = 0;
+            for (let i = 1; i < measurePoints.length; i++) {
+                totalDist += AMap.GeometryUtil.distance(measurePoints[i - 1], measurePoints[i]);
+            }
+            distEl.textContent = totalDist < 1000 ? Math.round(totalDist) + ' 米' : (totalDist / 1000).toFixed(2) + ' 公里';
+            resultEl.classList.add('show');
+        }
+
+        function clearMeasure() {
+            measurePoints = [];
+            measureMarkers.forEach(m => m.setMap(null));
+            measureMarkers = [];
+            if (measureLine) { measureLine.setMap(null); measureLine = null; }
+            document.getElementById('measureResult').classList.remove('show');
+        }
+
+        // 地图右键清除测距
+        map.on('rightclick', function(e) {
+            if (measureActive) {
+                clearMeasure();
+                showTip('测距已清除，可重新点击开始');
+            }
+        });
     </script>
 </body>
 </html>
