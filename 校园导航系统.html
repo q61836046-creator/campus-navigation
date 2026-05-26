@@ -2268,6 +2268,349 @@
             from { opacity: 0; transform: translateX(-50%) translateY(20px); }
             to { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
+
+        /* ==================== 移动端响应式适配 ==================== */
+        @media (max-width: 768px) {
+            /* 标题栏 - 更紧凑 */
+            .title {
+                height: 40px;
+                line-height: 40px;
+                font-size: 14px;
+                letter-spacing: 1px;
+                padding: 0 8px;
+            }
+
+            /* 顶部工具栏 - 两行排列，按钮更小 */
+            .top-toolbar {
+                top: 44px;
+                right: 4px;
+                left: 4px;
+                flex-wrap: wrap;
+                gap: 4px;
+                justify-content: center;
+                max-width: none;
+                background: rgba(255,255,255,0.9);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-radius: 10px;
+                padding: 4px 6px;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+                border: 1px solid var(--border-color);
+            }
+
+            body.dark-mode .top-toolbar {
+                background: rgba(30,30,50,0.92);
+            }
+
+            .toolbar-btn {
+                width: 32px !important;
+                height: 32px !important;
+                border-radius: 8px !important;
+            }
+
+            .toolbar-btn svg {
+                width: 17px !important;
+                height: 17px !important;
+            }
+
+            .toolbar-btn .badge {
+                min-width: 14px !important;
+                height: 14px !important;
+                font-size: 9px !important;
+                top: -3px !important;
+                right: -3px !important;
+            }
+
+            /* 侧边栏 - 变为全屏底部抽屉 */
+            .sidebar {
+                position: fixed !important;
+                top: auto !important;
+                left: 0 !important;
+                bottom: 0 !important;
+                width: 100% !important;
+                max-height: 60vh;
+                border-radius: 20px 20px 0 0 !important;
+                z-index: 9999 !important;
+                transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 -6px 40px rgba(0,0,0,0.15) !important;
+            }
+
+            .sidebar.collapsed {
+                transform: translateY(100%) !important;
+                left: 0 !important;
+                opacity: 1 !important;
+            }
+
+            /* 收起/展开按钮改为底部浮动 */
+            .toggle-btn {
+                position: fixed !important;
+                top: auto !important;
+                left: 50% !important;
+                bottom: 16px !important;
+                transform: translateX(-50%) !important;
+                width: auto !important;
+                height: 36px !important;
+                border-radius: 18px !important;
+                padding: 0 18px !important;
+                font-size: 12px !important;
+                writing-mode: horizontal-tb !important;
+                z-index: 9998 !important;
+                display: flex !important;
+                gap: 6px;
+                align-items: center;
+            }
+
+            .toggle-btn.collapsed {
+                left: 50% !important;
+                border-radius: 18px !important;
+            }
+
+            /* 搜索框 */
+            #search-input {
+                font-size: 13px !important;
+                height: 36px !important;
+            }
+
+            /* 快捷工具网格 */
+            .quick-tools-grid {
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 6px !important;
+            }
+
+            .quick-tool-btn {
+                padding: 8px 2px !important;
+            }
+
+            .quick-tool-btn svg {
+                width: 20px !important;
+                height: 20px !important;
+            }
+
+            .quick-tool-btn span {
+                font-size: 9px !important;
+            }
+
+            /* 定位按钮 */
+            .location-btn {
+                padding: 8px 12px !important;
+                font-size: 12px !important;
+                border-radius: 10px !important;
+            }
+
+            /* 卡片样式 */
+            .card {
+                padding: 10px !important;
+                border-radius: 10px !important;
+            }
+
+            /* 弹窗全屏优化 */
+            .modal {
+                width: 95% !important;
+                max-width: none !important;
+                max-height: 85vh !important;
+                border-radius: 16px !important;
+            }
+
+            .modal-header {
+                padding: 12px 14px !important;
+            }
+
+            .modal-title {
+                font-size: 14px !important;
+            }
+
+            .modal-body {
+                padding: 12px 14px !important;
+            }
+
+            /* 导航结果面板 */
+            .nav-result-panel {
+                left: 8px !important;
+                right: 8px !important;
+                width: auto !important;
+                bottom: 8px !important;
+                max-height: 45vh !important;
+                border-radius: 14px !important;
+            }
+
+            /* 路况复选框 */
+            .traffic-checkbox-wrap {
+                top: 90px !important;
+                right: 8px !important;
+            }
+
+            .traffic-checkbox-wrap label {
+                font-size: 11px !important;
+            }
+
+            /* tip 提示文字 */
+            #tip {
+                font-size: 11px !important;
+                padding: 3px 8px !important;
+                border-radius: 10px !important;
+            }
+
+            /* 语音指示器位置 */
+            .voice-indicator {
+                bottom: 70px !important;
+                font-size: 12px !important;
+                padding: 10px 18px !important;
+            }
+
+            /* Toast提示 */
+            .toast-message {
+                font-size: 12px !important;
+                padding: 8px 18px !important;
+                bottom: 60px !important;
+            }
+
+            /* 出行方式切换更紧凑 */
+            .transport-switch {
+                gap: 2px !important;
+                padding: 2px !important;
+            }
+
+            .transport-btn {
+                padding: 6px 2px !important;
+                font-size: 10px !important;
+                border-radius: 8px !important;
+            }
+
+            .transport-btn svg {
+                width: 17px !important;
+                height: 17px !important;
+            }
+
+            /* 周边设施网格 */
+            .poi-types {
+                grid-template-columns: repeat(5, 1fr) !important;
+                gap: 4px !important;
+            }
+
+            .poi-type-btn {
+                padding: 6px 2px !important;
+                border-radius: 6px !important;
+            }
+
+            .poi-type-btn svg {
+                width: 17px !important;
+                height: 17px !important;
+            }
+
+            .poi-type-btn span {
+                font-size: 8px !important;
+            }
+
+            /* 分享面板 */
+            .share-options {
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 8px !important;
+            }
+
+            .share-icon {
+                width: 42px !important;
+                height: 42px !important;
+            }
+
+            /* 统计网格 */
+            .stats-grid {
+                gap: 6px !important;
+            }
+
+            .stat-value {
+                font-size: 18px !important;
+            }
+
+            /* 场所详情弹窗 */
+            .place-detail-icon {
+                width: 48px !important;
+                height: 48px !important;
+                border-radius: 12px !important;
+            }
+
+            .place-detail-icon svg {
+                width: 24px !important;
+                height: 24px !important;
+            }
+
+            .place-detail-name {
+                font-size: 15px !important;
+            }
+
+            /* 紧急电话 */
+            .emergency-call-btn {
+                padding: 5px 10px !important;
+                font-size: 10px !important;
+            }
+
+            /* 历史记录项 */
+            .history-item {
+                padding: 8px !important;
+            }
+
+            /* 展开侧边栏时地图上移 */
+            .sidebar:not(.collapsed) ~ #container,
+            .sidebar:not(.collapsed) + #container {
+                /* 不影响地图，使用底部抽屉模式 */
+            }
+        }
+
+        /* 超小屏幕 (iPhone SE 等) */
+        @media (max-width: 380px) {
+            .title {
+                font-size: 12px;
+                height: 36px;
+                line-height: 36px;
+            }
+
+            .toolbar-btn {
+                width: 28px !important;
+                height: 28px !important;
+            }
+
+            .toolbar-btn svg {
+                width: 15px !important;
+                height: 15px !important;
+            }
+
+            .top-toolbar {
+                gap: 3px !important;
+                padding: 3px 4px !important;
+            }
+
+            .sidebar {
+                max-height: 65vh !important;
+            }
+
+            .quick-tools-grid {
+                grid-template-columns: repeat(4, 1fr) !important;
+            }
+        }
+
+        /* 横屏手机优化 */
+        @media (max-width: 900px) and (orientation: landscape) {
+            .title {
+                height: 34px;
+                line-height: 34px;
+                font-size: 13px;
+            }
+
+            .top-toolbar {
+                top: 38px !important;
+            }
+
+            .sidebar {
+                max-height: 75vh !important;
+                width: 320px !important;
+                left: 4px !important;
+                bottom: 4px !important;
+                border-radius: 14px !important;
+            }
+
+            .toggle-btn {
+                bottom: 8px !important;
+            }
+        }
     </style>
 
     <script>
